@@ -9,6 +9,8 @@ int check_cycle(listint_t *list)
 {
 	int n;
 
+	if (list == NULL)
+		return (0);
 	while (list->next)
 	{
 		n = list - list->next;
