@@ -9,4 +9,4 @@ if (number % 10 != 0):
     elif(last < 6):
         print("and is less than 6 and not 0")
 else:
-    print(" and is 0")
+    print("and is 0")
