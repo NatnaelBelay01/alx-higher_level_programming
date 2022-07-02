@@ -45,11 +45,13 @@ listint_t *nvgt(listint_t **head, int count)
 
 int is_palindrome(listint_t **head)
 {
-	if (*head == NULL)
-		return (1);
-	int lst = len(head) - 1, i = 0;
+	int lst, i;
 	listint_t *temp1, *temp2;
 
+	if (*head == NULL || (*head)->next == NULL)
+		return (1);
+	lst = len(head) - 1;
+	i = 0;
 	while (i <= lst / 2)
 	{
 		temp1 = nvgt(head, i);
