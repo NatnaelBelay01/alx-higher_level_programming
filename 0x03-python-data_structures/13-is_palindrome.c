@@ -25,12 +25,12 @@ int len(listint_t **head)
  */
 int *channel(listint_t **head)
 {
-	int *int_arr, i = 0;
+	int *int_arr, i = 1;
 	listint_t *temp = *head;
 
 	if (*head == NULL || (*head)->next == NULL)
 		return (NULL);
-	int_arr = malloc((sizeof(int) * len(head)) + 4);
+	int_arr = malloc(sizeof(int) * (len(head) + 2));
 	if (int_arr == NULL)
 		return (NULL);
 	while (temp != NULL)
@@ -39,6 +39,7 @@ int *channel(listint_t **head)
 		i++;
 		temp = temp->next;
 	}
+	int_arr[0] = i - 1;
 	int_arr[i] = '\0';
 	return (int_arr);
 }
@@ -66,13 +67,11 @@ int pali(int *arr, int fst, int lst)
  */
 int is_palindrome(listint_t **head)
 {
-	int *arr = channel(head), i = 0;
+	int *arr = channel(head), i;
 
 	if (arr == NULL)
 		return (1);
-	while (arr[i] != '\0')
-		i++;
-	i = pali(arr, 0, i - 1);
+	i = pali(arr, 1, arr[0]);
 	free(arr);
 	return (i);
 }
