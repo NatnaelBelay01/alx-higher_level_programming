@@ -18,12 +18,21 @@ int len(listint_t **head)
 	}
 	return (count);
 }
+/**
+ * channel -  a function that channels all the data of alist
+ * @head: the head of the list
+ * Return: an array of the data from the list
+ */
 int *channel(listint_t **head)
 {
 	int *int_arr, i = 0;
 	listint_t *temp = *head;
 
+	if (*head == NULL)
+		return (NULL);
 	int_arr = malloc((sizeof(int) * len(head)) + 4);
+	if (int_arr == NULL)
+		return (NULL);
 	while (temp != NULL)
 	{
 		int_arr[i] = temp->n;
@@ -31,8 +40,15 @@ int *channel(listint_t **head)
 		temp = temp->next;
 	}
 	int_arr[i] = '\0';
-	return(int_arr);
+	return (int_arr);
 }
+/**
+ * pali - a function that checks for palindrome
+ * @arr: an array to be checked
+ * @fst: index of the first number
+ * @lst: index of the last number
+ * Return: 0 or 1
+ */
 int pali(int *arr, int fst, int lst)
 {
 	if (arr[fst] == arr[lst])
@@ -51,6 +67,9 @@ int pali(int *arr, int fst, int lst)
 int is_palindrome(listint_t **head)
 {
 	int *arr = channel(head), i = 0;
+
+	if (arr == NULL)
+		return (1);
 	while (arr[i] != '\0')
 		i++;
 	i = pali(arr, 0, i - 1);
