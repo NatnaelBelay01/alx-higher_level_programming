@@ -18,48 +18,42 @@ int len(listint_t **head)
 	}
 	return (count);
 }
-/**
- * nvgt - a function that navigates in a list
- * @head: the head of the list
- * @count: the index
- * Return: a pointer to the node
- */
-
-listint_t *nvgt(listint_t **head, int count)
+int *channel(listint_t **head)
 {
+	int *int_arr, i = 0;
 	listint_t *temp = *head;
 
-	while (count > 0)
+	int_arr = malloc((sizeof(int) * len(head)) + 4);
+	while (temp != NULL)
 	{
+		int_arr[i] = temp->n;
+		i++;
 		temp = temp->next;
-		count--;
 	}
-	return (temp);
+	int_arr[i] = '\0';
+	return(int_arr);
 }
-
+int pali(int *arr, int fst, int lst)
+{
+	if (arr[fst] == arr[lst])
+	{
+		if (fst + 1 == lst - 1 || lst == fst + 1)
+			return (1);
+		return (pali(arr, fst + 1, lst - 1));
+	}
+	return (0);
+}
 /**
  * is_palindrome - a function that checks a list
  * @head: the head
  * Return: 0 or 1
  */
-
 int is_palindrome(listint_t **head)
 {
-	int lst, i;
-	listint_t *temp1, *temp2;
-
-	if (*head == NULL || (*head)->next == NULL)
-		return (1);
-	lst = len(head) - 1;
-	i = 0;
-	while (i <= lst / 2)
-	{
-		temp1 = nvgt(head, i);
-		temp2 = nvgt(head, lst);
-		if (temp1->n != temp2->n)
-			return (0);
+	int *arr = channel(head), i = 0;
+	while (arr[i] != '\0')
 		i++;
-		lst--;
-	}
-	return (1);
+	i = pali(arr, 0, i - 1);
+	free(arr);
+	return (i);
 }
