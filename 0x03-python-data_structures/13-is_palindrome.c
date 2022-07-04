@@ -28,7 +28,7 @@ int *channel(listint_t **head)
 	int *int_arr, i = 0;
 	listint_t *temp = *head;
 
-	if (*head == NULL)
+	if (*head == NULL || (*head)->next == NULL)
 		return (NULL);
 	int_arr = malloc((sizeof(int) * len(head)) + 4);
 	if (int_arr == NULL)
