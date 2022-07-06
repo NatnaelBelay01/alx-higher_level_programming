@@ -4,7 +4,7 @@ def uniq_add(my_list=[]):
     prev = None
     res = 0
     for i in my_list:
-        if i != prev or prev == None:
+        if i != prev:
             prev = i
             res += prev
     return res
