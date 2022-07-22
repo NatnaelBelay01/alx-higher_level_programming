@@ -1,6 +1,8 @@
 A test for a function that adds two numbers
 
 >>> add = __import__("0-add_integer").add_integer
+>>> import sys
+>>> sys.path.insert(1, '../')
 
 # Normal addition tests
 >>> add(0)

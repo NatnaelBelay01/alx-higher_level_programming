@@ -5,8 +5,8 @@
 def say_my_name(first_name, last_name=""):
     """prints your name.
     Args:
-        first_name: the first name
-        last_name: the last name
+        first_name(str): the first name
+        last_name(str): the last name
     """
     if type(first_name) is not str:
         raise TypeError("first_name must be a string")
