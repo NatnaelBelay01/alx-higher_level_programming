@@ -1,0 +1,39 @@
+A test for the say_my_name function
+
+#Importing
+>>> import sys
+>>> sys.path.insert(1, '../')
+>>> say = __import__("3-say_my_name").say_my_name
+>>> fname = "Natnael"
+>>> lname = "Belay"
+
+
+#Regular Tests
+>>> say(fname, lname)
+My name is Natnael Belay
+
+#TyepErrors
+>> say(5, lname)
+Traceback (most recent call last):
+...
+TypeError: first_name must be a string
+>>> say(fname, 5)
+Traceback (most recent call last):
+...
+TypeError: last_name must be a string
+>>> say(fname, {})
+Traceback (most recent call last):
+...
+TypeError: last_name must be a string
+>>> say(fname, [])
+Traceback (most recent call last):
+...
+TypeError: last_name must be a string
+>>> say({}, lname)
+Traceback (most recent call last):
+...
+TypeError: first_name must be a string
+>>> say([], lname)
+Traceback (most recent call last):
+...
+TypeError: first_name must be a string

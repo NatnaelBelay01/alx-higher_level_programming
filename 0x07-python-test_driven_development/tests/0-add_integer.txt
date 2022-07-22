@@ -1,0 +1,35 @@
+A test for a function that adds two numbers
+
+>>> add = __import__("0-add_integer").add_integer
+
+# Normal addition tests
+>>> add(0)
+98
+>>> add(-1)
+97
+>>> add(10.5)
+108
+>>> add(10, 50)
+60
+
+#type Errors
+>>> add(10+5j)
+Traceback (most recent call last):
+...
+TypeError: a must be an integer
+>>> add([])
+Traceback (most recent call last):
+...
+TypeError: a must be an integer
+>>> add({})
+Traceback (most recent call last):
+...
+TypeError: a must be an integer
+>>> add(set())
+Traceback (most recent call last):
+...
+TypeError: a must be an integer
+>>> add(10, set())
+Traceback (most recent call last):
+...
+TypeError: b must be an integer
