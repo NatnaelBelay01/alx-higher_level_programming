@@ -6,6 +6,7 @@
 class Rectangle:
     """a class representation of a rectangle"""
 
+    number_of_instances = 0
     def __init__(self, width=0, height=0):
         """Initializes the class.
         Args:
@@ -20,6 +21,7 @@ class Rectangle:
                 raise ValueError("{} must be >= 0".format(j[i]))
         self.__width = width
         self.__height = height
+        Rectangle.number_of_instances += 1
 
     def __str__(self):
         """prints the rectangle"""
@@ -76,3 +78,4 @@ class Rectangle:
     def __del__(self):
         """deletes an instance"""
         print("Bye rectangle...")
+        Rectangle.number_of_instances -= 1
