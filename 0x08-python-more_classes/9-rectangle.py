@@ -99,5 +99,4 @@ class Rectangle:
         Args:
             size(int): the size of the square
         """
-        new = Rectangle(size, size)
-        return new
+        return cls(size, size)
