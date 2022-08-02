@@ -24,4 +24,4 @@ class Student():
     def reload_from_json(self, json):
         """a method that replaes all the attributes"""
         for x in json:
-            self.__dict__.update({x:jason[x]})
+            self.__dict__.update({x: jason[x]})
