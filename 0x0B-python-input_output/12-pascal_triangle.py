@@ -3,6 +3,7 @@
 
 
 def pascal_triangle(n):
+    """Funtion definition"""
     lst = [[1], [1, 1]]
 
     if n < 0:
