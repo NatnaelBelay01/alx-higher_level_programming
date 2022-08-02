@@ -23,7 +23,5 @@ class Student():
 
     def reload_from_json(self, json):
         """a method that replaes all the attributes"""
-        my_dic = dict()
-        for x in json:
-            my_dic.update({x: json[x]})
-        return my_dic
+        for k, vin json.items():
+            setattr(self, k, v)
