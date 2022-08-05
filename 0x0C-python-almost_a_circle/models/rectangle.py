@@ -13,7 +13,9 @@ class Rectangle(Base):
         for i in (width, height, x, y):
             if type(i) is not int:
                 raise TypeError("{} must be an integer".format(j[i]))
-            if i < 0:
+            elif i < 0 and i in (width, height):
+                raise ValueError("{} must be > 0".format(j[i]))
+            elif i < 0:
                 raise ValueError("{} must be >= 0".format(j[i]))
         self.__width = width
         self.__height = height
@@ -31,7 +33,7 @@ class Rectangle(Base):
         if type(value) is not int:
             raise TypeError("width must be an integer")
         if value < 0:
-            raise ValueError("width must be >= 0")
+            raise ValueError("width must be > 0")
         self.__width = value
 
     @property
@@ -45,7 +47,7 @@ class Rectangle(Base):
         if type(value) is not int:
             raise TypeError("height must be an integer")
         if value < 0:
-            raise ValueError("height must be >= 0")
+            raise ValueError("height must be > 0")
         self.__height = value
 
     @property
@@ -67,7 +69,7 @@ class Rectangle(Base):
         """Retrives the height"""
         return self.__y
 
-    @height.setter
+    @y.setter
     def y(self, value):
         """sets the height"""
         if type(value) is not int:
@@ -78,7 +80,7 @@ class Rectangle(Base):
 
     def area(self):
         """calculates the area"""
-        return self.__height * self.__width
+        return self.height * self.width
 
     def display(self):
         """prints the area"""
@@ -93,8 +95,14 @@ class Rectangle(Base):
 
     def __str__(self):
         """returns a printable"""
-        return "[Rectangle] ({:d}) {:d}/{:d}" \
-                "- {:d}/{:d}".format(self.id, self.__x, self.__y, self.__width, self.__height)
+        nam = str(self.__class__.__name__)
+        sid = self.id
+        wid = self.__width
+        hei = self.__height
+        sx = self.__x
+        sy = self.__y
+        return "[{}] ({:d}) {:d}/{:d}" \
+            " - {:d}/{:d}".format(nam, sid, sx, sy, wid, hei)
 
     def update(self, *args, **kwargs):
         """updates the values"""
@@ -105,3 +113,11 @@ class Rectangle(Base):
         else:
             for i, j in kwargs.items():
                 setattr(self, i, j)
+
+    def to_dictionary(self):
+        """returns a dictionary repr of rectangle"""
+        dic = {}
+        atr = ['id', 'width', 'height', 'x', 'y']
+        for i in atr:
+            dic[i] = getattr(self, i)
+        return dic
