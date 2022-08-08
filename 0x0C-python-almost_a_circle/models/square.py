@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-"""A square reprentation"""
+"""A square reprentation that inherits from,
+rectangle"""
 from models.rectangle import Rectangle
 
 

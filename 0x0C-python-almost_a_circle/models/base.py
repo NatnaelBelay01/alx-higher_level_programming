@@ -1,5 +1,6 @@
 #!/usr/python3
-"""A base object"""
+"""A base object that lays the foundations
+for the future objects"""
 import json
 import os.path
 
