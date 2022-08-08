@@ -1,6 +1,7 @@
 #!/usr/python3
 """A base object"""
 import json
+import os.path
 
 
 class Base():
@@ -46,9 +47,9 @@ class Base():
     def create(cls, **dictionary):
         """creates an instance"""
         if cls.__name__ == "Rectangle":
-            dummy = cls(0, 0)
+            dummy = cls(1, 1)
         else:
-            dummy = cls(0)
+            dummy = cls(1)
         dummy.update(**dictionary)
         return dummy
 
@@ -57,6 +58,8 @@ class Base():
         """loads from afile"""
         obj = []
         nam = "{}.json".format(str(cls.__name__))
+        if os.path.exists(nam) is False:
+            return []
         with open(nam, 'r', encoding="utf-8") as f:
             fil = f.read()
         jsn = cls.from_json_string(fil)

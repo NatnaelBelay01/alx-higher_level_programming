@@ -9,14 +9,23 @@ class Rectangle(Base):
     def __init__(self, width, height, x=0, y=0, id=None):
         """initializes the values"""
         super().__init__(id)
-        j = {width: 'width', height: 'height', x: 'x', y: 'y'}
-        for i in (width, height, x, y):
-            if type(i) is not int:
-                raise TypeError("{} must be an integer".format(j[i]))
-            elif i < 0 and i in (width, height):
-                raise ValueError("{} must be > 0".format(j[i]))
-            elif i < 0:
-                raise ValueError("{} must be >= 0".format(j[i]))
+        if type(width) is not int:
+            raise TypeError("width must be an integer")
+        if width <= 0:
+            raise TypeError("width must be > 0")
+        if type(height) is not int:
+            raise TypeError("height must be an integer")
+        if height <= 0:
+            raise ValueError("height must be > 0")
+        if type(x) is not int:
+            raise TypeError("x must be an integer")
+        if x < 0:
+            raise ValueError("x must be >= 0")
+        if type(y) is not int:
+            raise TypeError("y must be an integer")
+        if y < 0:
+            raise ValueError("y must be >= 0")
+
         self.__width = width
         self.__height = height
         self.__x = x
@@ -32,7 +41,7 @@ class Rectangle(Base):
         """sets the width"""
         if type(value) is not int:
             raise TypeError("width must be an integer")
-        if value < 0:
+        if value <= 0:
             raise ValueError("width must be > 0")
         self.__width = value
 
@@ -46,7 +55,7 @@ class Rectangle(Base):
         """sets the height"""
         if type(value) is not int:
             raise TypeError("height must be an integer")
-        if value < 0:
+        if value <= 0:
             raise ValueError("height must be > 0")
         self.__height = value
 
@@ -95,21 +104,19 @@ class Rectangle(Base):
 
     def __str__(self):
         """returns a printable"""
-        nam = str(self.__class__.__name__)
-        sid = self.id
-        wid = self.__width
-        hei = self.__height
-        sx = self.__x
-        sy = self.__y
-        return "[{}] ({:d}) {:d}/{:d}" \
-            " - {:d}/{:d}".format(nam, sid, sx, sy, wid, hei)
+        nam = "[{}]".format(str(self.__class__.__name__))
+        sid = " ({}) ".format(self.id)
+        swh = "{}/{}".format(self.width, self.height)
+        sxy = "{}/{} - ".format(self.x, self.y)
+        return nam + sid + sxy + swh
 
     def update(self, *args, **kwargs):
         """updates the values"""
         atrlst = ['id', 'width', 'height', 'x', 'y']
-        if args:
+        if args and len(args) > 0:
             for i, j in enumerate(args):
-                setattr(self, atrlst[i], j)
+                if i <= 4:
+                    setattr(self, atrlst[i], j)
         else:
             for i, j in kwargs.items():
                 setattr(self, i, j)

@@ -16,7 +16,7 @@ class Square(Rectangle):
         sx = self.x
         sy = self.y
         siz = self.width
-        return "[Square] ({:d}) {:d}/{:d} - {:d}".format(sid, sx, sy, siz)
+        return "[Square] ({}) {}/{} - {}".format(sid, sx, sy, siz)
 
     @property
     def size(self):
@@ -34,11 +34,12 @@ class Square(Rectangle):
         ups = ['id', 'size', 'x', 'y']
         if args:
             for i, j in enumerate(args):
-                if ups[i] == 'size':
-                    setattr(self, 'width', j)
-                    setattr(self, 'height', j)
-                else:
-                    setattr(self, ups[i], j)
+                if i <= 3:
+                    if ups[i] == 'size':
+                        setattr(self, 'width', j)
+                        setattr(self, 'height', j)
+                    else:
+                        setattr(self, ups[i], j)
         else:
             for i, j in kwargs.items():
                 if i == 'size':
