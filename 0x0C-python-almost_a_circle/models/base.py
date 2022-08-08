@@ -1,4 +1,4 @@
-#!/usr/python3
+#!/usr/bin/python3
 """A base object that lays the foundations
 for the future objects
 """
