@@ -1,12 +1,13 @@
 #!/usr/python3
 """A base object that lays the foundations
-for the future objects"""
+for the future objects
+"""
 import json
 import os.path
 
 
 class Base():
-    """defines the class"""
+    """Class base"""
     __nb_objects = 0
 
     def __init__(self, id=None):
