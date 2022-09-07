@@ -1,2 +1,2 @@
 -- insert new row
-INSERT first_table (id = 89, name = 'Best School')
+INSERT INTO first_table VALUES (id = 89, name = 'Best School')
