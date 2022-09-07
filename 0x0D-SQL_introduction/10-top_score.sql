@@ -1,4 +1,4 @@
 -- a script that fetches results
-SELECT * 
+SELECT score, name 
  FROM second_table 
- ORDER BY score DESC, name;
+ ORDER BY score DESC;
